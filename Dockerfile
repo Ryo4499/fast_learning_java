@@ -11,10 +11,10 @@ ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 RUN apk update && \
     apk add shadow tree tzdata git vim curl wget && \
-    groupadd -g ${GID} ${MY_GROUP} && \
-    useradd -u ${UID} -g ${GID} -d /home/${MY_USER} -s /bin/bash -m ${MY_USER}
+    groupadd -g ${HOST_GID} ${MY_GROUP} && \
+    useradd -u ${HOST_UID} -g ${HOST_GID} -d /home/${MY_USER} -s /bin/sh -m ${MY_USER}
 
-USER $MY_USER
+USER $HOST_UID:$HOST_GID
 
-WORKDIR "/home/${MY_USER}/app"
+WORKDIR "${HOME}/app"
 

@@ -17,5 +17,10 @@ cp .env.sample .env
 vi .env
 docker-compose build
 docker-compose up -d
+docker-compose exec java sh
+./java.sh part1/Array.java
+cd part2
+../java.sh Polymorphism.java
+./java.sh part3/StreamAPI.java
 docker-compose down
 ```

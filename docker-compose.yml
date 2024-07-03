@@ -1,7 +1,7 @@
 services:
   java:
     build:
-      context: ./java
+      context: ./
       dockerfile: Dockerfile
       args:
         HOST_UID: $HOST_UID
@@ -11,11 +11,11 @@ services:
         TZ: $TZ
     env_file:
       - .env
-    working_dir: "/home/java/app"
-    user: java
+    working_dir: "/home/${MY_USER}/app"
+    user: ${MY_USER}:${MY_GROUP}
     volumes:
       - type: bind
-        source: ./java
-        target: "/home/java/app"
+        source: ./
+        target: "/home/${MY_USER}/app"
     tty: true
     entrypoint: sh
